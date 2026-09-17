@@ -3,7 +3,7 @@ const { test, expect } = require('../../fixtures/walker_fixture.js');
 const { heal } = require('../../fixtures/inline_healer.js');
 
 test('2026 06 30T07 58 02', async ({ page }) => {
-  // 1. Go to login page
+  // 1. Go to login page now updated
   await page.goto(testData.url);
   await page.waitForLoadState('domcontentloaded');
 
@@ -45,22 +45,22 @@ test('2026 06 30T07 58 02', async ({ page }) => {
     () => page.locator('[data-testid="order-list-new-button"]'));
 
   // 11. Stop 1: Open Location dropdown
-  await heal(page, 'stop 1 location dropdown button', 'visible', null,
+  await heal(page, 'stop1 location dropdown button', 'visible', null,
     () => page.locator('form[id="stop-1-content-location"] button[type="button"]').first());
-  await heal(page, 'stop 1 location dropdown button', 'click', null,
+  await heal(page, 'stop1 location dropdown button', 'click', null,
     () => page.locator('form[id="stop-1-content-location"] button[type="button"]').first());
 
   // 12. Stop 1: Select location option
-  await heal(page, 'stop 1 location option', 'visible', null,
+  await heal(page, 'stop1 location option', 'visible', null,
     () => page.locator('li[aria-label="Novapath Supply Chain Systems"]').first());
-  await heal(page, 'stop 1 location option', 'click', null,
+  await heal(page, 'stop1 location option', 'click', null,
     () => page.locator('li[aria-label="Novapath Supply Chain Systems"]').first());
 
   // 13. Stop 1: Open date picker
   await heal(page, 'choose date button', 'visible', null,
-    () => page.locator('button[aria-label="Choose Date"]'));
+    () => page.locator('button[aria-label="Choose Date"]').first());
   await heal(page, 'choose date button', 'click', null,
-    () => page.locator('button[aria-label="Choose Date"]'));
+    () => page.locator('button[aria-label="Choose Date"]').first());
 
   // 14. Stop 1: Select date "30"
   await heal(page, 'date option 30', 'visible', null,
@@ -69,39 +69,39 @@ test('2026 06 30T07 58 02', async ({ page }) => {
     () => page.locator('span').filter({ hasText: /^30$/ }).first());
 
   // 15. Stop 1: Fill internal notes
-  await heal(page, 'stop 1 internal notes', 'visible', null,
+  await heal(page, 'stop1 internal notes', 'visible', null,
     () => page.locator('#stop-1-content-internal-notes'));
-  await heal(page, 'stop 1 internal notes', 'fill', testData.stop1ContentInternalNotes,
+  await heal(page, 'stop1 internal notes', 'fill', testData.stop1ContentInternalNotes,
     () => page.locator('#stop-1-content-internal-notes'));
 
   // 16. Stop 2: Open Location dropdown
-  await heal(page, 'stop 2 location dropdown button', 'visible', null,
+  await heal(page, 'stop2 location dropdown button', 'visible', null,
     () => page.locator('form[id="stop-2-content-location"] button[type="button"]').first());
-  await heal(page, 'stop 2 location dropdown button', 'click', null,
+  await heal(page, 'stop2 location dropdown button', 'click', null,
     () => page.locator('form[id="stop-2-content-location"] button[type="button"]').first());
 
   // 17. Stop 2: Select location option
-  await heal(page, 'stop 2 location option', 'visible', null,
+  await heal(page, 'stop2 location option', 'visible', null,
     () => page.locator('li[aria-label="Cafe and then Some"]').first());
-  await heal(page, 'stop 2 location option', 'click', null,
+  await heal(page, 'stop2 location option', 'click', null,
     () => page.locator('li[aria-label="Cafe and then Some"]').first());
 
   // 18. Line Item 1: Open product dropdown
-  await heal(page, 'line item 1 dropdown button', 'visible', null,
+  await heal(page, 'line item1 dropdown button', 'visible', null,
     () => page.locator('div[id="line-item-num-1-content"] button[type="button"]').first());
-  await heal(page, 'line item 1 dropdown button', 'click', null,
+  await heal(page, 'line item1 dropdown button', 'click', null,
     () => page.locator('div[id="line-item-num-1-content"] button[type="button"]').first());
 
   // 19. Line Item 1: Select product option
-  await heal(page, 'line item 1 product option', 'visible', null,
+  await heal(page, 'line item1 product option', 'visible', null,
     () => page.locator('li[aria-label="just some garbage"]').first());
-  await heal(page, 'line item 1 product option', 'click', null,
+  await heal(page, 'line item1 product option', 'click', null,
     () => page.locator('li[aria-label="just some garbage"]').first());
 
   // 20. Line Item 1: Click Handling input
-  await heal(page, 'handling field', 'visible', null,
+  await heal(page, 'handling input', 'visible', null,
     () => page.locator('#handling-0'));
-  await heal(page, 'handling field', 'click', null,
+  await heal(page, 'handling input', 'click', null,
     () => page.locator('#handling-0'));
 
   // 21. Bill To: Open Location dropdown
